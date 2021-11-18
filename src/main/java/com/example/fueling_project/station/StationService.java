@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,33 +43,20 @@ public class StationService {
 
 
     @Transactional
-    public void updateStation(Long stationId, String name, String adress) {
+    public void updateStation(Long stationId, String name, String adress, double price) {
         Station station = stationRepository.findById(stationId).orElseThrow(() -> new IllegalStateException("Station with id" + stationId + " does not exist"));
 
-        if (name != null && name.length() > 0 && !Objects.equals(station.getName(), name)) {
+        if(name != null && name.length() > 0 && !Objects.equals(station.getName(),name)){
             station.setName(name);
-        }
-        if (adress != null && adress.length() > 0 && !Objects.equals(station.getAdress(), adress)) {
+        }if(adress != null){
             Optional<Station> stationOptional = stationRepository.findStationByAdress(adress);
-            throw new IllegalStateException("This adress allready exists");
+            if(stationOptional.isPresent()){
+                throw new IllegalStateException("Adress already exists");
+            }
+            station.setAdress(adress);
+        }if(price != 0){
+            station.setPrice(price);
         }
-        station.setAdress(adress);
+
     }
-
-//       @Transactional
-//    public void updateStudent(Long studentId, String name, String email) {
-//        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("Student with id " + studentId + " does not exist"));
-//
-//        if(name != null && name.length() > 0 && !Objects.equals(student.getName(),name)){
-//            student.setName(name);
-//        }
-//        if(email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)){
-//            Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
-//            if(studentOptional.isPresent()){
-//                throw new IllegalStateException("Email already in use");
-//            }
-//            student.setEmail(email);
-//        }
-
-
 }

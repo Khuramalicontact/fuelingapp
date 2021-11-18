@@ -31,24 +31,22 @@ public class StationController {
     }
 
     @DeleteMapping(path = "{stationId}")
-    public void deleteStudent(@PathVariable("stationId") Long stationId) {
+    public void deleteStation(@PathVariable("stationId") Long stationId) {
         stationService.deleteStation(stationId);
     }
 
-    @PutMapping(path = "{stationdId}")
+
+    @PutMapping(path = "{stationId}")
     public void updateStudent(@PathVariable("stationId") Long stationId,
                               @RequestParam(required = false) String name,
-                              @RequestParam(required = false) String adress) {
-        stationService.updateStation(stationId, name, adress);
+                              @RequestParam(required = false) String adress,
+                              @RequestParam(required = false) double price){
+        stationService.updateStation(stationId, name, adress,price);
     }
-
-    //  @PutMapping(path = "{studentId}")
-    //    public void updateStudent(@PathVariable("studentId") Long studentId,
-    //                              @RequestParam(required = false) String name,
-    //                              @RequestParam(required = false) String email){
-    //                        studentService.updateStudent(studentId, name, email);
-    //    }
 }
+
+
+
 
 
 
