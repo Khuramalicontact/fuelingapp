@@ -43,7 +43,7 @@ public class StationService {
 
 
     @Transactional
-    public void updateStation(Long stationId, String name, String adress, double price) {
+    public void updateStation(Long stationId, String name, String adress, double price,int zip) {
         Station station = stationRepository.findById(stationId).orElseThrow(() -> new IllegalStateException("Station with id" + stationId + " does not exist"));
 
         if(name != null && name.length() > 0 && !Objects.equals(station.getName(),name)){
@@ -56,7 +56,10 @@ public class StationService {
             station.setAdress(adress);
         }if(price != 0){
             station.setPrice(price);
+        }if(zip != 0){
+            station.setZip(zip);
         }
 
     }
+
 }

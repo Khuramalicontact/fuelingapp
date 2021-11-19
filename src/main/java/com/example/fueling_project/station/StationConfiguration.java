@@ -13,9 +13,9 @@ public class StationConfiguration {
     CommandLineRunner commandLineRunner(StationRepository stationRepository) {
         return args -> {
 
-            Station station_one = new Station("Shell", "Turnhoutsebaan 366", 1.95);
+            Station station_one = new Station("Shell", "Turnhoutsebaan 366", 1.95,2140);
 
-            Station station_two = new Station("Maes", "Antwerpsesteenweg 60", 1.68);
+            Station station_two = new Station("Maes", "Antwerpsesteenweg 60", 1.68,2070);
 
             stationRepository.saveAll(List.of(station_one, station_two));
         };

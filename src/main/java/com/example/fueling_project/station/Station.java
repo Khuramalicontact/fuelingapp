@@ -22,21 +22,32 @@ public class Station {
     private String name;
     private String adress;
     private double price;
+    private int zip;
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
 
     public Station() {
     }
 
-    public Station(String name, String adress, double price) {
+    public Station(String name, String adress, double price, int zip) {
         this.name = name;
         this.adress = adress;
         this.price = price;
+        this.zip = zip;
     }
 
-    public Station(Long id, String name, String adress, double price) {
+    public Station(Long id, String name, String adress, double price, int zip) {
         this.id = id;
         this.name = name;
         this.adress = adress;
         this.price = price;
+        this.zip = zip;
     }
 
     public Long getId() {
@@ -78,6 +89,7 @@ public class Station {
                 ", name='" + name + '\'' +
                 ", adress='" + adress + '\'' +
                 ", price=" + price +
+                ", zip=" + zip +
                 '}';
     }
 }

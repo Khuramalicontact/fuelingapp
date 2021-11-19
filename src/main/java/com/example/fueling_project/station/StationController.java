@@ -40,8 +40,9 @@ public class StationController {
     public void updateStudent(@PathVariable("stationId") Long stationId,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) String adress,
-                              @RequestParam(required = false) double price){
-        stationService.updateStation(stationId, name, adress,price);
+                              @RequestParam(required = false) double price,
+                              @RequestParam(required = false) int zip){
+        stationService.updateStation(stationId, name, adress,price,zip);
     }
 }
 
