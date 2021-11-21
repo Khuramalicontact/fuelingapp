@@ -1,6 +1,7 @@
 package com.example.fueling_project.station;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,13 +38,18 @@ public class StationController {
 
 
     @PutMapping(path = "{stationId}")
-    public void updateStudent(@PathVariable("stationId") Long stationId,
+    public void updateStation(@PathVariable("stationId") Long stationId,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) String adress,
                               @RequestParam(required = false) double price,
                               @RequestParam(required = false) int zip){
         stationService.updateStation(stationId, name, adress,price,zip);
     }
+
+//    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public void updateStudent(@RequestParam("stationId") Long stationId, @RequestBody Station station){
+//        stationService.updateStation(stationId,station);
+//    }
 }
 
 
